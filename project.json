@@ -1,0 +1,54 @@
+{
+  "id": "100",
+  "slug": "100-social-service-wait-time-estimator",
+  "name": "Social Service Wait-time Estimator",
+  "domain": "Public services & civic systems",
+  "domain_slug": "public-services",
+  "task_type": "regression",
+  "target": "p100_social_service_wait_time_estimator_outcome_value",
+  "features": [
+    "p100_social_service_wait_time_estimator_wait_time_min",
+    "p100_social_service_wait_time_estimator_application_completeness",
+    "p100_social_service_wait_time_estimator_service_load",
+    "p100_social_service_wait_time_estimator_repeat_visits",
+    "p100_social_service_wait_time_estimator_travel_distance_km",
+    "p100_social_service_wait_time_estimator_staff_ratio",
+    "p100_social_service_wait_time_estimator_response_delay_hours",
+    "p100_social_service_wait_time_estimator_neighborhood_index",
+    "p100_social_service_wait_time_estimator_weather_impact",
+    "p100_social_service_wait_time_estimator_request_complexity"
+  ],
+  "model_key": "gradient-boosting",
+  "model_class": "GradientBoostingRegressor",
+  "serving": "CLI",
+  "extension_focus": "OpenTelemetry tracing",
+  "seed": 202700,
+  "rows": 425535,
+  "dataset_bytes": 39780047,
+  "model_training": {
+    "source": "synthetic dataset bundled with this project",
+    "sample_rows": 5000,
+    "fit_rows": 4000,
+    "holdout_rows": 1000,
+    "metrics": {
+      "mae": 1.0633,
+      "rmse": 1.3742,
+      "r2": 0.7813
+    },
+    "artifact": "models/model.joblib"
+  },
+  "gui_feature": {
+    "mode": "scorecard",
+    "title": "Social Service Wait-time Estimator · Model scorecard",
+    "description": "Review the selected algorithm, synthetic training rows, and saved holdout metrics. This panel is tuned to Social Service Wait-time Estimator and its p100 social service wait time estimator request complexity signal.",
+    "focus_feature": "p100_social_service_wait_time_estimator_request_complexity",
+    "mode_title": "Model scorecard"
+  },
+  "gui": {
+    "frontend": "HTML/CSS/JavaScript",
+    "backend": "FastAPI",
+    "standalone": true
+  },
+  "model_artifact": "models/model.joblib",
+  "model_bytes": 72544
+}
